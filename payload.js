@@ -3,9 +3,7 @@
  */
 
 chrome.runtime.onMessage.addListener(function(message, sender) {
-    console.log('listened');
-    console.log(message);
-    console.log(sender);
+    console.log('onMessage tiggered');
 
     var deleteDatabase=function(databaseName) {
         var req = indexedDB.deleteDatabase(databaseName);
@@ -18,7 +16,8 @@ chrome.runtime.onMessage.addListener(function(message, sender) {
         req.onblocked = function () {
             console.log('Couldn\'t delete database ' + databaseName + ' due to the operation being blocked');
         };
-    }
+    };
+    
     indexedDB.webkitGetDatabaseNames().onsuccess = function(sender, args)
     {
         var dbs = sender.target;
@@ -28,4 +27,4 @@ chrome.runtime.onMessage.addListener(function(message, sender) {
     };
 });
 
-console.log("drop it like it's hot");
+console.log("payload injected");
