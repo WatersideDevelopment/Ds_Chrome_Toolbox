@@ -23,7 +23,7 @@ chrome.runtime.onMessage.addListener(function(message, sender) {
     {
         var dbs = sender.target;
         for(var i=0; i<dbs.result.length;i++) {
-            indexedDB.deleteDatabase(dbs.result[i]);
+            deleteDatabase(dbs.result[i]);
         }
     };
 });
